@@ -3,6 +3,7 @@ package cz.upce.cv04.entity;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "profile_has_posts")
 public class ProfileHasPosts {
     @Id
     @Column(name = "id", nullable = false)

@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
+@Table(name = "profile")
 public class Profile {
     @Id
     @Column(name = "id", nullable = false)
@@ -13,6 +14,9 @@ public class Profile {
 
     @OneToMany(mappedBy = "id")
     private Set<ProfileHasPosts> profilePosts;
+
+    @OneToOne(mappedBy = "profile")
+    private User user;
 
     @Column()
     private String name;
@@ -61,5 +65,13 @@ public class Profile {
 
     public void setQuote(String quote) {
         this.quote = quote;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

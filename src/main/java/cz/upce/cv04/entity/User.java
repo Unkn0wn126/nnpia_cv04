@@ -1,9 +1,9 @@
 package cz.upce.cv04.entity;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
+@Table(name = "users")
 public class User {
     @Id
     @Column(name = "id", nullable = false)
@@ -19,8 +19,9 @@ public class User {
     @Column()
     private String password;
     
-    @OneToMany(mappedBy = "id")
-    private Set<UserHasProfile> userProfile;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "profile_id", referencedColumnName = "id")
+    private Profile profile;
 
     public Long getId() {
         return id;
@@ -54,11 +55,11 @@ public class User {
         this.password = password;
     }
 
-    public Set<UserHasProfile> getUserProfile() {
-        return userProfile;
+    public Profile getProfile() {
+        return profile;
     }
 
-    public void setUserProfile(Set<UserHasProfile> userProfile) {
-        this.userProfile = userProfile;
+    public void setProfile(Profile userProfile) {
+        this.profile = userProfile;
     }
 }

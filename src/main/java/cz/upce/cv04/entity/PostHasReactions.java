@@ -3,6 +3,7 @@ package cz.upce.cv04.entity;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "post_has_reactions")
 public class PostHasReactions {
     @Id
     @Column(name = "id", nullable = false)

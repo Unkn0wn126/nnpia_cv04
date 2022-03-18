@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
+@Table(name = "posts")
 public class Post {
     @Id
     @Column(name = "id", nullable = false)
